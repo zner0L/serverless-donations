@@ -15,3 +15,15 @@ variable "checkoutportal_secret" {
 variable "cors_allowed_origin" {
   description = "The value for the `Access-Control-Allow-Origin` header. Can only be a single origin or wildcard."
 }
+
+variable "paysafe_apiEndpoint" {
+  description = "The API endpoint to initiate and collect payments with paysafecards at. Add a trailing slash."
+}
+
+variable "paysafe_apiKey" {
+  description = "The API key provided for you by paysafe."
+}
+
+variable "base_url" {
+  description = "The base url of the API. Add a trailing slash."
+}
