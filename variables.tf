@@ -27,3 +27,7 @@ variable "paysafe_apiKey" {
 variable "base_url" {
   description = "The base url of the API. Add a trailing slash."
 }
+
+variable "mollie_apiKey" {
+  description = "The API key provied by mollie."
+}
