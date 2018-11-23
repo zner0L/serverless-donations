@@ -44,6 +44,7 @@ resource "aws_lambda_function" "post_donation" {
       BASE_URL            = "${var.base_url}"
       MOLLIE_API_KEY      = "${var.mollie_apiKey}"
       DONATION_ID_BUCKET  = "${aws_s3_bucket.donation_id_bucket.id}"
+      COINGATE_API_KEY    = "${var.coingate_apiKey}"
     }
   }
 }

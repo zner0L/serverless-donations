@@ -29,5 +29,9 @@ variable "base_url" {
 }
 
 variable "mollie_apiKey" {
-  description = "The API key provied by mollie."
+  description = "The API key provied by Mollie."
+}
+
+variable "coingate_apiKey" {
+  description = "The API key provied by CoinGate."
 }

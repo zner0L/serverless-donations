@@ -22,6 +22,15 @@ const MOLLIE_PARAMS = {
 };
 
 exports.postDonation = async function(event, context) {
+    const COINDGATE_PARAMS = {
+        baseURL: 'https://api.coingate.com/v2/',
+        timeout: 1000,
+        headers: {
+            Authorization: 'Token ' + process.env.COINGATE_API_KEY,
+            'Content-Type': 'application/json'
+        }
+    };
+
     let request;
 
     try {
@@ -140,6 +149,25 @@ exports.postDonation = async function(event, context) {
                         body: JSON.stringify({ message: 'Mollie payment initiation failed.' })
                     });
                 });
+            break;
+        case 'coingate':
+            let coingate_api = axios.create(COINDGATE_PARAMS);
+
+            return await coingate_api
+                .post('orders', request.data)
+                .then(response => {
+                    return addCors({
+                        statusCode: 200,
+                        body: JSON.stringify({ auth_url: response.data['payment_url'] })
+                    });
+                })
+                .catch(error => {
+                    return addCors({
+                        statusCode: 502,
+                        body: JSON.stringify({ message: 'CoinGate payment initiation failed.' })
+                    });
+                });
+            break;
         default:
             return addCors({
                 statusCode: 400,
