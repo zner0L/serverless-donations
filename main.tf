@@ -156,11 +156,11 @@ resource "aws_api_gateway_integration" "post_donation" {
 
 module "post_donation_cors" {
   source  = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors"
-  version = "0.1.0"
+  version = "0.2.0"
 
   api_id          = "${aws_api_gateway_rest_api.api.id}"
   api_resource_id = "${aws_api_gateway_method.post_donation.resource_id}"
-  allowed_origin  = "${var.cors_allowed_origin}"
+  allow_origin    = "${var.cors_allowed_origin}"
 }
 
 resource "aws_api_gateway_method_response" "post_donation_response" {
@@ -211,11 +211,11 @@ resource "aws_api_gateway_integration" "capture_donation" {
 
 module "capture_donation_cors" {
   source  = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors"
-  version = "0.1.0"
+  version = "0.2.0"
 
   api_id          = "${aws_api_gateway_rest_api.api.id}"
   api_resource_id = "${aws_api_gateway_method.capture_donation.resource_id}"
-  allowed_origin  = "${var.cors_allowed_origin}"
+  allow_origin    = "${var.cors_allowed_origin}"
 }
 
 resource "aws_api_gateway_method_response" "capture_donation_response" {
@@ -266,11 +266,11 @@ resource "aws_api_gateway_integration" "state_donation" {
 
 module "state_donation_cors" {
   source  = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors"
-  version = "0.1.0"
+  version = "0.2.0"
 
   api_id          = "${aws_api_gateway_rest_api.api.id}"
   api_resource_id = "${aws_api_gateway_method.state_donation.resource_id}"
-  allowed_origin  = "${var.cors_allowed_origin}"
+  allow_origin    = "${var.cors_allowed_origin}"
 }
 
 resource "aws_api_gateway_method_response" "state_donation_response" {
