@@ -1,5 +1,5 @@
 variable "name" {
-  type        = "string"
+  type        = string
   default     = "serverless-checkoutportal-donation"
   description = "A name for your serverless-checkoutportal-donation instance. This is primarily necessary if you want to run multiple instances alongside one another."
 }
@@ -35,3 +35,4 @@ variable "mollie_apiKey" {
 variable "coingate_apiKey" {
   description = "The API key provied by CoinGate."
 }
+
