@@ -34,7 +34,7 @@ resource "aws_lambda_function" "post_donation" {
   function_name    = "post_donation"
   handler          = "index.postDonation"
   role             = aws_iam_role.lambda_exec.arn
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 5
 
   environment {
@@ -68,7 +68,7 @@ resource "aws_lambda_function" "capture_donation" {
   function_name    = "capture_donation"
   handler          = "index.captureDonation"
   role             = aws_iam_role.lambda_exec.arn
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 5
 
   environment {
@@ -97,7 +97,7 @@ resource "aws_lambda_function" "state_donation" {
   function_name    = "state_donation"
   handler          = "index.stateDonation"
   role             = aws_iam_role.lambda_exec.arn
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 5
 
   environment {
