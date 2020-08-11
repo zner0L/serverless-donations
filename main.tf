@@ -34,7 +34,7 @@ resource "aws_lambda_function" "post_donation" {
   function_name    = "post_donation"
   handler          = "index.postDonation"
   role             = aws_iam_role.lambda_exec.arn
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 5
 
   environment {
@@ -68,7 +68,7 @@ resource "aws_lambda_function" "capture_donation" {
   function_name    = "capture_donation"
   handler          = "index.captureDonation"
   role             = aws_iam_role.lambda_exec.arn
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 5
 
   environment {
@@ -97,7 +97,7 @@ resource "aws_lambda_function" "state_donation" {
   function_name    = "state_donation"
   handler          = "index.stateDonation"
   role             = aws_iam_role.lambda_exec.arn
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 5
 
   environment {
@@ -158,7 +158,7 @@ resource "aws_api_gateway_integration" "post_donation" {
 //>> postDonation CORS
 
 module "post_donation_cors" {
-  source = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors?ref=0.3.0"
+  source = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors?ref=0.3.1"
 
   api_id          = aws_api_gateway_rest_api.api.id
   api_resource_id = aws_api_gateway_method.post_donation.resource_id
@@ -212,7 +212,7 @@ resource "aws_api_gateway_integration" "capture_donation" {
 //>> captureDonation CORS
 
 module "capture_donation_cors" {
-  source = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors?ref=0.3.0"
+  source = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors?ref=0.3.1"
 
   api_id          = aws_api_gateway_rest_api.api.id
   api_resource_id = aws_api_gateway_method.capture_donation.resource_id
@@ -266,7 +266,7 @@ resource "aws_api_gateway_integration" "state_donation" {
 //>> stateDonation CORS
 
 module "state_donation_cors" {
-  source = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors?ref=0.3.0"
+  source = "github.com/squidfunk/terraform-aws-api-gateway-enable-cors?ref=0.3.1"
 
   api_id          = aws_api_gateway_rest_api.api.id
   api_resource_id = aws_api_gateway_method.state_donation.resource_id
